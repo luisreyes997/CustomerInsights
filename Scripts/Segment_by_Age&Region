@@ -1,0 +1,25 @@
+
+# ✅ Segment by Age
+def segment_by_age(df):
+    bins = [0, 25, 35, 50, 100]
+    labels = ['<25', '25–35', '36–50', '50+']
+    df['age_group'] = pd.cut(df['Age'], bins=bins, labels=labels)
+    return df
+
+df = segment_by_age(df)
+
+# ✅ Segment by Region
+def segment_by_region(df):
+    return df.groupby('Region')
+
+region_groups = segment_by_region(df)
+
+
+# ✅ Display segmented results
+print("\n📊 Age Groups:")
+print(df[['CustomerID', 'Age', 'age_group']].head())
+
+print("\n📊 Region Segments:")
+for region, group in region_groups:
+    print(f"\nRegion: {region}")
+    print(group[['CustomerID', 'TotalSpend']].head())
