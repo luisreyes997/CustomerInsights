@@ -1,0 +1,20 @@
+# ✅ Plot Spend by Region
+def plot_spend_by_region(df):
+    region_spend = df.groupby('Region')['TotalSpend'].sum().sort_values()
+
+    plt.figure(figsize=(10, 6))
+    region_spend.plot(kind='barh', color='teal')
+    plt.title('Total Spend by Region')
+    plt.xlabel('Total Spend')
+    plt.ylabel('Region')
+    plt.tight_layout()
+
+    save_path = os.path.join('visuals', 'spend_by_region.png')
+    plt.savefig(save_path)
+    print("✅ Plot saved to:", os.path.abspath(save_path))
+
+    plt.show()
+
+
+# ✅ Run the plot
+plot_spend_by_region(df)
