@@ -1,4 +1,7 @@
 # ✅ Plot Spend by Region
+import matplotlib.pyplot as plt
+
+
 def plot_spend_by_region(df):
     region_spend = df.groupby('Region')['TotalSpend'].sum().sort_values()
 
@@ -18,3 +21,6 @@ def plot_spend_by_region(df):
 
 # ✅ Run the plot
 plot_spend_by_region(df)
+
+
+
